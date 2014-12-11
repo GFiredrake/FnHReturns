@@ -10,23 +10,31 @@ namespace Fools_and_Heroes_Returns.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            ViewBag.Title = "Log in";
 
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Register()
         {
-            ViewBag.Message = "Your app description page.";
+            ViewBag.Title = "Register";
 
             return View();
         }
+        //public ActionResult About()
+        //{
+        //    ViewBag.Message = "Your app description page.";
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        //    return View();
+        //}
 
-            return View();
-        }
+        //public ActionResult Contact()
+        //{
+        //    ViewBag.Message = "Your contact page.";
+
+        //    return View();
+        //}
+
+        
     }
 }
