@@ -17,6 +17,19 @@
                 @Html.TextBoxFor(m => m.UserName)
             </li>
             <li>
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Surname)
+                @Html.TextBoxFor(m => m.Surname)
+            </li>
+            @*implement if system used by more than just peterborough
+            <li>
+                @Html.LabelFor(m => m.Branch)
+                @Html.TextBoxFor(m => m.Branch)
+            </li>*@
+            <li>
                 @Html.LabelFor(m => m.Password)
                 @Html.PasswordFor(m => m.Password)
             </li>
