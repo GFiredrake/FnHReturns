@@ -12,6 +12,7 @@
                     Password: $('#Password').val(),
                     ConfirmPassword: $('#ConfirmPassword').val()
                 };
+                //Ajax call to registerController
             }
             else {
                 ClearTextColour();

@@ -6,6 +6,7 @@
         };
         if(logInDetails.UserName != "" && logInDetails.Password != "")
         {
+            $('#logInError').text("")
             $.ajax({
                 type: "POST",
                 url: "LogIn/AttemptLogIn",
@@ -29,6 +30,7 @@
                     //If successfull
                     if (data == 3) {
                         //load index page
+                        alert("you have logged on.")
                     }
             },
                 error: function (data, staus, error) { alert("Im sorry we have encountered a " + error + ". Please try again") }
