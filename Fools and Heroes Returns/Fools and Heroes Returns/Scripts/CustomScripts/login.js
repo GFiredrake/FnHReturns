@@ -20,15 +20,15 @@
                     //If Username dose not exist
                     if(data == 1)
                     {
-
+                        $('#logInError').text("The username you supplied please check and try again.")
                     }
                     //If password dose not match user name
-                    if (data == 1) {
-
+                    if (data == 2) {
+                        $('#logInError').text("The password you supplied is incorect please check and try again.")
                     }
                     //If successfull
-                    if (data == 1) {
-
+                    if (data == 3) {
+                        //load index page
                     }
             },
                 error: function (data, staus, error) { alert("Im sorry we have encountered a " + error + ". Please try again") }

@@ -3,41 +3,41 @@
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
     <h2>Create a new account.</h2>
+    <p id="registerError" class="error"></p>
 </hgroup>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
-
-    <fieldset>
-        <legend>Registration Form</legend>
         <ol>
-            <li>
+            <li id="UserNameArea">
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName)
             </li>
-            <li>
+            <li id="FirstNameArea">
                 @Html.LabelFor(m => m.FirstName)
                 @Html.TextBoxFor(m => m.FirstName)
             </li>
-            <li>
+            <li id="SurnameArea">
                 @Html.LabelFor(m => m.Surname)
                 @Html.TextBoxFor(m => m.Surname)
             </li>
-            @*implement if system used by more than just peterborough
-            <li>
-                @Html.LabelFor(m => m.Branch)
-                @Html.TextBoxFor(m => m.Branch)
-            </li>*@
-            <li>
+                        @*implement if system used by more than just peterborough
+        <li id="UserNameArea">
+            @Html.LabelFor(m => m.Branch)
+            @Html.TextBoxFor(m => m.Branch)
+        </li>*@
+            <li id="PasswordArea">
                 @Html.LabelFor(m => m.Password)
                 @Html.PasswordFor(m => m.Password)
             </li>
-            <li>
+            <li id="ConfirmPasswordArea">
                 @Html.LabelFor(m => m.ConfirmPassword)
                 @Html.PasswordFor(m => m.ConfirmPassword)
             </li>
         </ol>
-        <input type="submit" value="Register" />
-    </fieldset>
+        <button class="button regigisterButton">Register</button>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/register")
+    @Scripts.Render("~/bundles/jquery")
 }

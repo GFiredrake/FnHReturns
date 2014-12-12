@@ -15,6 +15,10 @@ namespace Fools_and_Heroes_Returns
                         "~/Scripts/CustomScripts/login.js",
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/register").Include(
+                        "~/Scripts/CustomScripts/Register.js",
+                        "~/Scripts/jquery-{version}.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
 
