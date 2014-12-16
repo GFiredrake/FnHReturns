@@ -18,30 +18,41 @@ namespace Fools_and_Heroes_Returns.Controllers
             {
                 return 0;
             }
-            //System.Data.SqlClient.SqlConnection connection;
-            //connection = new System.Data.SqlClient.SqlConnection();
-            //connection.ConnectionString = "Data Source=(LocalDB)\v11.0;AttachDbFilename='C:\\Dev\\FnHReturns\\Fools and Heroes Returns\\Fools and Heroes Returns\\App_Data\\PlayerDatabase.mdf';Integrated Security=True";
 
-            //SqlCommand command = new SqlCommand();
-            //SqlDataReader reader;
+            List<LoginDetails> logInList = new List<LoginDetails>();
 
-            //command.CommandText = "SELECT UserName, Password FROM Members";
-            //command.CommandType = System.Data.CommandType.Text;
-            //command.Connection = connection;
+            SqlConnection connection = new SqlConnection("Data Source=SILVERMOON;Initial Catalog=CharacterReturns;Integrated Security=True");
+            string script = "SELECT UserName, Password FROM Members";
+            connection.Open();
+            SqlCommand command = new SqlCommand(script, connection);
+            SqlDataReader reader = command.ExecuteReader();
 
-            //connection.Open();
-            //reader = command.ExecuteReader();
-            // //return 1 if no results returned
+            while (reader.Read())
+            {
+                LoginDetails logIn = new LoginDetails();
+                logIn.UserName = reader["UserName"].ToString();
+                logIn.Password = reader["Password"].ToString();
+                logInList.Add(logIn);
+            }
 
-            // //check that user name provided matches a username in the database
-            // //return 1 if username not found
+            connection.Close();
+            
+            if (logInList == null)
+                return 1;
 
-            // //if username exists check that password provided matches password in database
-            // //return 2 if password is incorect
-            //connection.Close();
-
-
-            return 3;
+            foreach( LoginDetails detail in logInList)
+            {
+                if(detail.UserName == details.UserName)
+                {
+                    if(detail.Password == details.Password)
+                    {
+                        return 3;
+                    }
+                    return 2;
+                }
+                return 1;
+            }
+            return 0;
         }
     }
 }

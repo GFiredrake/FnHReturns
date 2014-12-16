@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $(".regigisterButton").click(function () {
-        if ($('#UserName').val() != "" && $('#FirstName').val() != "" && $('#Surname').val() != "" && $('#Password').val() != "" && $('#ConfirmPassword').val() != "")
+        if ($('#UserName').val() != "" && $('#FirstName').val() != "" && $('#Surname').val() != "" && $('#Password').val() != "" && $('#ConfirmPassword').val() != "" && $('#Email').val() != "")
         {
             ClearTextColour();
             $('#registerError').text("")
@@ -9,10 +9,21 @@
                     UserName: $('#UserName').val(),
                     FirstName: $('#FirstName').val(),
                     Surname: $('#Surname').val(),
+                    Email: $('#Email').val(),
                     Password: $('#Password').val(),
                     ConfirmPassword: $('#ConfirmPassword').val()
                 };
                 //Ajax call to registerController
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:50431/Register/AttemptRegister",
+                    data: registrationDetails,
+                    dataType: "json",
+                    success: function (data) {
+                        alert("so you wanna registers")
+                    },
+                    error: function (data, staus, error) { alert("Im sorry we have encountered a " + error + ". Please try again") }
+                });
             }
             else {
                 ClearTextColour();
@@ -40,7 +51,9 @@
             if ($('#ConfirmPassword').val() == "") {
                 $('#ConfirmPasswordArea').css("color", "red");
             }
-            
+            if ($('#Email').val() == "") {
+                $('#EmailArea').css("color", "red");
+            }
         }
     });
 
@@ -50,5 +63,6 @@
         $('#SurnameArea').css("color", "black");
         $('#PasswordArea').css("color", "black");
         $('#ConfirmPasswordArea').css("color", "black");
+        $('#EmailArea').css("color", "black");
     };
 });

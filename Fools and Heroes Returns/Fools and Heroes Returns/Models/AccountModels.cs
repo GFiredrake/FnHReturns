@@ -38,6 +38,10 @@ namespace Fools_and_Heroes_Returns.Models
         [Display(Name = "Surname")]
         public string Surname { get; set; }
 
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
         //implement if system used by more than just peterborough
         //[Required]
         //[Display(Name = "Branch")]

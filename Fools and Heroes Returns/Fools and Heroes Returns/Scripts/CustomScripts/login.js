@@ -9,7 +9,7 @@
             $('#logInError').text("")
             $.ajax({
                 type: "POST",
-                url: "LogIn/AttemptLogIn",
+                url: "http://localhost:50431/LogIn/AttemptLogIn",
                 data: logInDetails,
                 dataType: "json",
                 success: function (data) {
@@ -21,7 +21,7 @@
                     //If Username dose not exist
                     if(data == 1)
                     {
-                        $('#logInError').text("The username you supplied please check and try again.")
+                        $('#logInError').text("The username you supplied dose not exist please check and try again.")
                     }
                     //If password dose not match user name
                     if (data == 2) {
