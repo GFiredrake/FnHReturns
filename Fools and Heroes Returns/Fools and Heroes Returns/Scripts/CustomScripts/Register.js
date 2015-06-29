@@ -20,7 +20,22 @@
                     data: registrationDetails,
                     dataType: "json",
                     success: function (data) {
-                        alert("so you wanna registers")
+                        if (data == 0) {
+                            $('#registerError').text("Im sorry we have encountered an error please and try again.")
+                        }
+                        //If Username already exists
+                        if (data == 1) {
+                            $('#registerError').text("Im sorry but this Username already exists, please try another.")
+                        }
+                        //If Email already exists
+                        if (data == 2) {
+                            $('#registerError').text("That Email is already associated with an acount please log onto that account or try another email.")
+                        }
+                        //If successfull
+                        if (data == 3) {
+                            //load index page
+                            alert("Your account has been created.")
+                        }
                     },
                     error: function (data, staus, error) { alert("Im sorry we have encountered a " + error + ". Please try again") }
                 });

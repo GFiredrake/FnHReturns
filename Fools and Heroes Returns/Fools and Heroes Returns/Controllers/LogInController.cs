@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Fools_and_Heroes_Returns.Controllers
 {
@@ -21,7 +22,8 @@ namespace Fools_and_Heroes_Returns.Controllers
 
             List<LoginDetails> logInList = new List<LoginDetails>();
 
-            SqlConnection connection = new SqlConnection("Data Source=SILVERMOON;Initial Catalog=CharacterReturns;Integrated Security=True");
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            SqlConnection connection = new SqlConnection(connectionString);
             string script = "SELECT UserName, Password FROM Members";
             connection.Open();
             SqlCommand command = new SqlCommand(script, connection);
@@ -34,9 +36,7 @@ namespace Fools_and_Heroes_Returns.Controllers
                 logIn.Password = reader["Password"].ToString();
                 logInList.Add(logIn);
             }
-
             connection.Close();
-            
             if (logInList == null)
                 return 1;
 
